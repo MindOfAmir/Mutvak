@@ -1,0 +1,21 @@
+.centered {
+  text-align: center;
+  color: black;
+}
+.customHeader {
+  border-radius: 3px;
+  border-color: black;
+  font-size: 2rem;
+  color: black;
+}
+.customCard {
+  margin-top: 3rem;
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    18px 5px 15px 15px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 18px 5px 15px 15px rgba(0, 0, 0, 0);
+  border-radius: 4rem;
+}
+.title {
+  font-size: 4rem;
+  color: white;
+}
