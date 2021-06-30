@@ -9,7 +9,7 @@ import CartItem from './CartItem';
 const Cart = props => {
   const cartCtx = useContext(CartContext);
 
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)} KM`;
   const hasItems = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = id => {
@@ -43,7 +43,7 @@ const Cart = props => {
     return (
       <Modal onClose={props.onClose}>
         <Checkmark />
-        <p className={classes.approved}>Order Approved!</p>
+        <p className={classes.approved}>Narudzba odobrena!</p>
       </Modal>
     );
   }
@@ -51,17 +51,17 @@ const Cart = props => {
     <Modal onClose={props.onClose}>
       {cartItems}
       <div className={classes.total}>
-        <span>Total Amount</span>
+        <span>Ukupno</span>
         <span>{totalAmount}</span>
       </div>
 
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onClose}>
-          Close
+          Zatvori
         </button>
         {hasItems && (
           <button className={classes.button} onClick={AcceptedOrder}>
-            Order
+            Naruči
           </button>
         )}
       </div>

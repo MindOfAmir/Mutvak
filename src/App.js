@@ -3,6 +3,7 @@ import { Switch } from 'react-router';
 import { Fragment } from 'react';
 import Welcome from './components/Pages/Welcome';
 import Store from './components/Pages/Store';
+import Admin from './components/Admin/Admin';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route path="/store">
           <Store></Store>
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
       </Switch>
     </Fragment>

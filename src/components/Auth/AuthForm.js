@@ -8,6 +8,7 @@ import Backdrop from '../UI/Backdrop';
 import { Button } from 'react-bootstrap';
 import { BounceLoader } from 'react-spinners';
 import { Redirect } from 'react-router-dom';
+import { Checkmark } from 'react-checkmark';
 
 const AuthForm = props => {
   const usernameInputRef = useRef();
@@ -19,9 +20,27 @@ const AuthForm = props => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
-
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const switchAuthModeHandler = () => {
     setIsLogin(prevstate => !prevstate);
+  };
+
+  const buttonAnimate = (load, auth) => {
+    if (load) {
+      return <BounceLoader color="orangered" size="30" />;
+    } else if (auth) {
+      return <Checkmark className={classes.chckMark} />;
+    } else {
+      return (
+        <Button
+          variant="outline-danger"
+          className={classes.closeBtn}
+          onClick={props.onCloseForm}
+        >
+          Zatvori
+        </Button>
+      );
+    }
   };
 
   const submitHandler = e => {
@@ -58,7 +77,12 @@ const AuthForm = props => {
         setIsLoading(false);
         if (res.ok) {
           authCtx.isLoggedIn = true;
-          setRedirect(true);
+          setIsAuthorized(true);
+          debugger;
+          setTimeout(() => {
+            setRedirect(true);
+          }, 3000);
+
           return res.json();
         } else {
           return res.json().then(data => {
@@ -72,7 +96,7 @@ const AuthForm = props => {
         const expirationTime = new Date(
           new Date().getTime() + +data.expiresIn * 1000
         );
-        console.log('blabla', authCtx);
+
         authCtx.login(data.idToken, expirationTime.toISOString());
         // baci na store
       })
@@ -142,17 +166,7 @@ const AuthForm = props => {
                 className={(classes.fadeIn, classes.fourth)}
                 value={isLogin ? 'Prijavi se' : 'Napravi račun'}
               ></input>
-              {isLoading ? (
-                <BounceLoader color="orangered" size="30" />
-              ) : (
-                <Button
-                  variant="outline-danger"
-                  className={classes.closeBtn}
-                  onClick={props.onCloseForm}
-                >
-                  Zatvori
-                </Button>
-              )}
+              {buttonAnimate(isLoading, isAuthorized)}
             </form>
           </div>
         </div>,

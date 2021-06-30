@@ -32,3 +32,11 @@
   border-color: white !important;
   color: white !important;
 }
+.logoutLink {
+  color: white;
+  text-decoration: none;
+}
+.logoutLink:hover {
+  color: white;
+  text-decoration: none;
+}

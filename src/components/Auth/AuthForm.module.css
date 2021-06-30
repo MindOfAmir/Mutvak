@@ -355,3 +355,7 @@ input[type='password']:placeholder {
 .closeBtn:hover {
   background-color: orangered;
 }
+.chckMark {
+  position: relative !important;
+  top: -1rem !important;
+}

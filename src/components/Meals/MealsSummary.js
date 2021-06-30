@@ -3,14 +3,14 @@ import classes from './MealsSummary.module.css';
 const MealsSummary = () => {
   return (
     <section className={classes.summary}>
-      <h2>Delicious Food,Delivered To you!</h2>
+      <h2>Ukusna hrana na klik od vas!</h2>
       <p>
-        Chose your favorite meal from our broad selection of available meals and
-        enjoy a delicious lunch or dinner at home.
+        Odaberite vašu omiljenu poslasticu iz našeg velikog izbora dostupnih
+        jela i uživajte u ukusnom i svježem obroku
       </p>
       <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
+        Sva jela se spremaju od kvalitetnih sastojaka, uvijek sveže i kuhano od
+        strane vrhunskih svjetski priznatih kuhara
       </p>
     </section>
   );

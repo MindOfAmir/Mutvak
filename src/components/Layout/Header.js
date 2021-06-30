@@ -37,7 +37,10 @@ const Header = props => {
             className={classes.btnCustom}
             onClick={logoutHandler}
           >
-            <Link to="/"> Odjavi se </Link>
+            <Link to="/" className={classes.logoutLink}>
+              {' '}
+              Odjavi se{' '}
+            </Link>
           </Button>
         ) : (
           <Button
