@@ -101,6 +101,7 @@ export const AuthContextProvider = props => {
     login: loginHandler,
     logout: logoutHandler,
     setUsername: setUser,
+    username: user,
     checkIsPartner: fetchPartners,
     isPartner: isPartner,
   };

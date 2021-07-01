@@ -3,7 +3,7 @@ import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
 import { useEffect, useState } from 'react';
 import { BounceLoader } from 'react-spinners';
-
+import { Container } from 'react-bootstrap';
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +30,7 @@ const AvailableMeals = () => {
         });
       }
       setMeals(loadedMeals);
+
       setIsLoading(false);
     };
 
@@ -40,7 +41,11 @@ const AvailableMeals = () => {
   }, []);
 
   if (isLoading) {
-    return <BounceLoader className={classes.mealsLoading} color="orangered" />;
+    return (
+      <Container className={classes.mealsLoading}>
+        <BounceLoader className={classes.mealsLoading} color="orangered" />
+      </Container>
+    );
   }
   if (httpError) {
     return (

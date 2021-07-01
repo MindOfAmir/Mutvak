@@ -378,3 +378,9 @@ input[type='password']:placeholder {
   position: relative !important;
   top: -1rem !important;
 }
+.mealsLoading {
+  text-align: center;
+  margin: auto;
+  top: auto;
+  left: auto;
+}

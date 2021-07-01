@@ -30,8 +30,8 @@ const PartnerForm = props => {
   const authCtx = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const [pending, setPending] = useState([]);
+  const [isDone, setIsDone] = useState(false);
 
   const buttonAnimate = (load, auth) => {
     if (load) {
@@ -54,10 +54,19 @@ const PartnerForm = props => {
   const submitHandler = e => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     const enteredUsername = usernameInputRef.current.value;
     const enteredComment = commentInputRef.current.value;
 
     postData(enteredUsername, enteredComment);
+
+    setIsLoading(false);
+    setIsDone(true);
+
+    setTimeout(() => {
+      props.onCloseForm();
+    }, 2000);
   };
 
   // pocetak fetcha
@@ -95,7 +104,7 @@ const PartnerForm = props => {
                 className={(classes.fadeIn, classes.fourth)}
                 value={'Podnesi Zahtjev'}
               ></input>
-              {buttonAnimate(isLoading, isAuthorized)}
+              {buttonAnimate(isLoading, isDone)}
             </form>
           </div>
         </div>,

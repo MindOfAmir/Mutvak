@@ -19,10 +19,12 @@ const MealsSummary = () => {
   const authCtx = useContext(AuthContext);
 
   authCtx.checkIsPartner(authCtx.username);
+  console.log(authCtx.username);
+  console.log(authCtx.isPartner);
 
-  const addMovieHandler = async (nam, desc, pri, randomNum) => {
+  const addMealHandler = async (nam, desc, pri, randomNum) => {
     const response = await fetch(
-      `https://mutvak-a2683-default-rtdb.europe-west1.firebasedatabase.app/meals/m${randomNum}`,
+      `https://mutvak-a2683-default-rtdb.europe-west1.firebasedatabase.app/meals.json`,
       {
         method: 'POST',
         body: JSON.stringify({
@@ -49,7 +51,10 @@ const MealsSummary = () => {
     const enteredPrice = +enteredPriceTemp;
     const randomNum = Math.trunc(Math.random() * 100);
 
-    addMovieHandler(enteredName, enteredDescription, enteredPrice, randomNum);
+    addMealHandler(enteredName, enteredDescription, enteredPrice, randomNum);
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
   return (
     <React.Fragment>
@@ -111,7 +116,7 @@ const MealsSummary = () => {
           Sva jela se spremaju od kvalitetnih sastojaka, uvijek sveže i kuhano
           od strane vrhunskih svjetski priznatih kuhara
         </p>
-        {!authCtx.isPartner && (
+        {authCtx.isPartner && (
           <Button variant="outline-success" onClick={showFormItemHandler}>
             Dodaj novi artikal
           </Button>
