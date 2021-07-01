@@ -40,7 +40,9 @@ const Admin = () => {
   }, []);
 
   if (isLoading) {
-    return <BounceLoader className={classes.pendingLoading} />;
+    return (
+      <BounceLoader className={classes.pendingLoading} color="orangered" />
+    );
   }
   if (httpError) {
     return (
@@ -56,12 +58,39 @@ const Admin = () => {
       <PendingPartner
         username={user.username}
         description={user.description}
+        id={user.id}
+        addPart={addPartner}
+        removePend={removePendingPartner}
       ></PendingPartner>
     );
   });
+
+  async function addPartner(username) {
+    const response = await fetch(
+      'https://mutvak-a2683-default-rtdb.europe-west1.firebasedatabase.app/Partner.json',
+      {
+        method: 'POST',
+        body: JSON.stringify({ username: username }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+  async function removePendingPartner(id) {
+    const response = await fetch(
+      `https://mutvak-a2683-default-rtdb.europe-west1.firebasedatabase.app/Pending/${id}.json`,
+      {
+        method: 'DELETE',
+      }
+    );
+    window.location.reload();
+  }
+
   return (
     <Fragment>
       <Header></Header>
+      <h1 className={classes.adminPanel}>Admin Panel</h1>
       <section className={classes.pending}>
         <Card>{pendingList}</Card>
       </section>

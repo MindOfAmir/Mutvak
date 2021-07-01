@@ -40,7 +40,7 @@ const AvailableMeals = () => {
   }, []);
 
   if (isLoading) {
-    return <BounceLoader className={classes.mealsLoading} />;
+    return <BounceLoader className={classes.mealsLoading} color="orangered" />;
   }
   if (httpError) {
     return (

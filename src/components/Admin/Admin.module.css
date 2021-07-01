@@ -22,8 +22,14 @@
 .pendingLoading {
   text-align: center;
   color: orangered;
+  margin: auto;
 }
 .pendingError {
   text-align: center;
   color: red;
+}
+.adminPanel {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
 }

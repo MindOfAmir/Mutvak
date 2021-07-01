@@ -25,6 +25,7 @@
 .mealsLoading {
   text-align: center;
   color: orangered;
+  margin: auto;
 }
 .mealsError {
   text-align: center;

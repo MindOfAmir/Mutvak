@@ -7,6 +7,8 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   login: token => {},
   logout: () => {},
+  username: '',
+  isPartner: false,
 });
 
 const calculateRemainingTime = expirationTime => {
@@ -34,6 +36,8 @@ const retrieveStoredToken = () => {
   };
 };
 export const AuthContextProvider = props => {
+  const [user, setUser] = useState('');
+
   const tokenData = retrieveStoredToken();
 
   let initalToken;
@@ -56,7 +60,6 @@ export const AuthContextProvider = props => {
   }, []);
 
   const loginHandler = (token, expirationTime) => {
-    console.log(token);
     setToken(token);
 
     localStorage.setItem('token', token);
@@ -73,11 +76,33 @@ export const AuthContextProvider = props => {
     }
   }, [tokenData, logoutHandler]);
 
+  const [isPartner, setIsPartner] = useState(false);
+
+  const fetchPartners = async uname => {
+    const response = await fetch(
+      'https://mutvak-a2683-default-rtdb.europe-west1.firebasedatabase.app/Partner.json'
+    );
+
+    if (!response.ok) {
+      throw new Error('Something went wrong!');
+    }
+    const responseData = await response.json();
+
+    for (const key in responseData) {
+      if (responseData[key].username === uname) {
+        setIsPartner(true);
+      }
+    }
+  };
+
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    setUsername: setUser,
+    checkIsPartner: fetchPartners,
+    isPartner: isPartner,
   };
 
   return (

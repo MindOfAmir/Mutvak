@@ -49,6 +49,8 @@ const AuthForm = props => {
     const enteredUsername = usernameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    authCtx.setUsername(enteredUsername);
+    authCtx.username = enteredUsername;
 
     // pocetak fetcha
     setIsLoading(true);
@@ -78,10 +80,9 @@ const AuthForm = props => {
         if (res.ok) {
           authCtx.isLoggedIn = true;
           setIsAuthorized(true);
-          debugger;
           setTimeout(() => {
             setRedirect(true);
-          }, 3000);
+          }, 2000);
 
           return res.json();
         } else {

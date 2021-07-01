@@ -5,12 +5,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from './Welcome.module.css';
 import TextAnimation from 'react-animate-text';
 import AuthForm from '../Auth/AuthForm';
+import PartnerForm from '../Partner/PartnerForm';
 
 const Welcome = () => {
   const [LoginFormShow, setLoginFormShow] = useState(false);
+  const [PartnerFormShow, setPartnerFormShow] = useState(false);
 
   const LoginFormShowHandler = () => {
     setLoginFormShow(prev => !prev);
+  };
+
+  const PartnerFormShowHandler = () => {
+    setPartnerFormShow(prev => !prev);
   };
 
   return (
@@ -22,6 +28,13 @@ const Welcome = () => {
           <Row>
             <Col>
               <AuthForm onCloseForm={LoginFormShowHandler}></AuthForm>
+            </Col>
+          </Row>
+        )}
+        {PartnerFormShow && (
+          <Row>
+            <Col>
+              <PartnerForm onCloseForm={PartnerFormShowHandler}></PartnerForm>
             </Col>
           </Row>
         )}
@@ -61,7 +74,12 @@ const Welcome = () => {
                   godina iskustva u kulinarstvu? Postanite dio našeg tima i
                   radite ono što volite!
                 </Card.Text>
-                <Button variant="outline-danger">Prijavi se!</Button>
+                <Button
+                  variant="outline-danger"
+                  onClick={PartnerFormShowHandler}
+                >
+                  Prijavi se!
+                </Button>
               </Card.Body>
             </Card>
           </Col>
