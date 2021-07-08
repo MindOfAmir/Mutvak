@@ -48,3 +48,6 @@
   text-align: center;
   color: greenyellow;
 }
+.locationInput {
+  width: 100% !important;
+}

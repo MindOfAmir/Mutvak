@@ -1,0 +1,17 @@
+.main {
+  text-align: center;
+  color: white;
+}
+.descriptionText {
+  text-align: center;
+}
+.descritionBtn {
+  text-align: center;
+  margin: auto;
+}
+.description {
+  text-align: center !important;
+}
+.pending {
+  text-align: center;
+}

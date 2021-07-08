@@ -4,6 +4,8 @@ import { Fragment } from 'react';
 import Welcome from './components/Pages/Welcome';
 import Store from './components/Pages/Store';
 import Admin from './components/Admin/Admin';
+import Recovery from './components/Pages/Recovery';
+import Thankyou from './components/Pages/Thankyou';
 
 function App() {
   return (
@@ -16,10 +18,16 @@ function App() {
           <Welcome />
         </Route>
         <Route path="/store">
-          <Store></Store>
+          <Store />
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path="/recovery">
+          <Recovery />
+        </Route>
+        <Route path="/thank-you">
+          <Thankyou />
         </Route>
       </Switch>
     </Fragment>

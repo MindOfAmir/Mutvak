@@ -48,9 +48,12 @@ const MealsSummary = () => {
     const enteredName = itemNameRef.current.value;
     const enteredDescription = itemDescriptionRef.current.value;
     const enteredPriceTemp = itemPriceRef.current.value;
-    const enteredPrice = +enteredPriceTemp;
+    let enteredPrice = 0;
+    if (enteredPriceTemp.includes(',')) {
+      enteredPrice += Number(enteredPriceTemp.replace(',', '.'));
+    }
     const randomNum = Math.trunc(Math.random() * 100);
-
+    debugger;
     addMealHandler(enteredName, enteredDescription, enteredPrice, randomNum);
     setTimeout(() => {
       window.location.reload();

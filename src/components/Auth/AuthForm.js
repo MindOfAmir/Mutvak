@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import classes from './AuthForm.module.css';
 import { useState, useRef, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
@@ -9,6 +8,7 @@ import { Button } from 'react-bootstrap';
 import { BounceLoader } from 'react-spinners';
 import { Redirect } from 'react-router-dom';
 import { Checkmark } from 'react-checkmark';
+import { Link } from 'react-router-dom';
 
 const AuthForm = props => {
   const usernameInputRef = useRef();
@@ -59,7 +59,6 @@ const AuthForm = props => {
     if (isLogin) {
       url =
         'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB_1cTxDn-F-jK71mCkqlFJnTl0BvHlaVc';
-      //DODAJ API KEY
     } else {
       url =
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB_1cTxDn-F-jK71mCkqlFJnTl0BvHlaVc';
@@ -168,6 +167,7 @@ const AuthForm = props => {
                 value={isLogin ? 'Prijavi se' : 'Napravi račun'}
               ></input>
               {buttonAnimate(isLoading, isAuthorized)}
+              <Link to="/recovery">Zaboravili ste zaporku?</Link>
             </form>
           </div>
         </div>,
